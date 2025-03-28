@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Button,
   Stack,
@@ -9,7 +9,6 @@ import {
   Group,
   Paper,
   Slider,
-  Title,
   Divider,
 } from "@mantine/core";
 import { MediaItem } from "@/lib/types";

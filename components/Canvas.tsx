@@ -6,6 +6,7 @@ import { MediaItem } from "@/lib/types";
 import ReactPlayer from "react-player";
 import { Button } from "@mantine/core";
 import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
+import Image from "next/image";
 
 type Props = {
   media: MediaItem[];
@@ -32,7 +33,7 @@ export default function Canvas({
 }: Props) {
   // Function to handle duration reading
   const handleDuration = (id: string, duration: number) => {
-    const roundedDuration = Math.ceil(duration); // Round up to the next integer
+    const roundedDuration = Math.ceil(duration);
     onUpdate(id, { endTime: roundedDuration });
   };
 
@@ -59,7 +60,6 @@ export default function Canvas({
         boxShadow: "0 2px 10px rgba(0,0,0,0.04)",
       }}
     >
-      {/* Conditionally display Dropzone only when there is no media */}
       {media.length === 0 && (
         <Dropzone
           onDrop={(files) => {
@@ -87,7 +87,6 @@ export default function Canvas({
         </Dropzone>
       )}
 
-      {/* Render media items when they are added */}
       {media.map((item) =>
         timer >= item.startTime && timer < item.endTime ? (
           <Rnd
@@ -137,14 +136,13 @@ export default function Canvas({
               )}
 
               {item.type === "image" ? (
-                <img
+                // In your JSX:
+                <Image
                   src={item.src}
                   alt=""
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "contain",
-                  }}
+                  layout="responsive"
+                  width={item.width}
+                  height={item.height}
                 />
               ) : (
                 <ReactPlayer

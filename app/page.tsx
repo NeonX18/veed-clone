@@ -45,10 +45,10 @@ export default function HomePage() {
       width: 300,
       height: 200,
       startTime: 0,
-      endTime: 10, // Duration to be updated
+      endTime: 10,
     };
 
-    setMedia([...media, newMedia]);
+    setMedia((prevMedia) => [...prevMedia, newMedia]);
     setSelectedId(newMedia.id);
   };
 
@@ -84,7 +84,7 @@ export default function HomePage() {
           justifyContent: "space-between",
         }}
       >
-        <Title order={3}>🎬 Veed Clone Editor</Title>
+        <Title order={3}> Video Editor </Title>
       </Box>
 
       <Container size="xl" pt="lg">

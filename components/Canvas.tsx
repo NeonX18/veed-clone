@@ -31,7 +31,6 @@ export default function Canvas({
   playerRefs,
   onAddMedia,
 }: Props) {
-  // Function to handle duration reading
   const handleDuration = (id: string, duration: number) => {
     const roundedDuration = Math.ceil(duration);
     onUpdate(id, { endTime: roundedDuration });

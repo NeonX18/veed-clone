@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import {
   Button,
@@ -30,8 +28,25 @@ export default function Timeline({
   setPlaying,
   onPlayPause,
 }: Props) {
-  if (!selected) return null;
+  if (!selected) {
+    return (
+      <Box
+        mt="xl"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <Text size="sm" c="dimmed" style={{ textAlign: "center" }}>
+          No media selected
+        </Text>
+      </Box>
+    );
+  }
 
+  // Ensure that `maxEndTime` is a valid number
   const maxEndTime = Math.ceil(selected.endTime ?? selected.duration ?? 10);
 
   return (
@@ -42,10 +57,8 @@ export default function Timeline({
         flexDirection: "column",
         alignItems: "center",
         width: "100%",
-        padding: "16px",
       }}
     >
-      {/* Timer Display */}
       <Paper
         p="md"
         radius="md"
@@ -81,6 +94,7 @@ export default function Timeline({
           />
         </Stack>
       </Paper>
+
       <Divider my="lg" style={{ width: "100%", maxWidth: 600 }} />
 
       <Group grow style={{ width: "100%", maxWidth: 600 }}>

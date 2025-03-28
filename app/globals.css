@@ -1,6 +1,7 @@
+/* globals.css */
 body {
   margin: 0;
-  font-family: "InterVariable", sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: #f8f9fa;
   color: #212529;
 }

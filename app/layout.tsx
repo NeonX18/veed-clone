@@ -1,9 +1,8 @@
-import { MantineProvider } from '@mantine/core';
+"use client";
+import "@mantine/core/styles.css";
+import "./globals.css";
 
-export const metadata = {
-  title: 'Veed Clone',
-  description: 'A VEED.io clone editor',
-};
+import { MantineProvider } from "@mantine/core";
 
 export default function RootLayout({
   children,
@@ -12,10 +11,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head />
       <body>
-        <MantineProvider defaultColorScheme="light">
-          {children}
-        </MantineProvider>
+        <MantineProvider>{children}</MantineProvider>
       </body>
     </html>
   );

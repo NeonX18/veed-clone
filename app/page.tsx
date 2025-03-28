@@ -30,9 +30,12 @@ export default function HomePage() {
     };
   }, [playing]);
 
-  const handleAddMedia = (file: File) => {
+  const handleAddMedia = (file: File | null) => {
+    if (!file) return; // If the file is null, return early
+
     const type = file.type.startsWith("image") ? "image" : "video";
     const src = URL.createObjectURL(file);
+
     const newMedia: MediaItem = {
       id: uuidv4(),
       type,
@@ -42,8 +45,9 @@ export default function HomePage() {
       width: 300,
       height: 200,
       startTime: 0,
-      endTime: 10, // This will be updated once the video duration is fetched
+      endTime: 10, // Duration to be updated
     };
+
     setMedia([...media, newMedia]);
     setSelectedId(newMedia.id);
   };
@@ -86,9 +90,9 @@ export default function HomePage() {
       <Container size="xl" pt="lg">
         <Box style={{ display: "flex", gap: "32px" }}>
           {/* Sidebar */}
-          <Stack spacing="md" style={{ width: 300 }}>
+          <Stack gap={10} style={{ width: 300 }}>
             <Paper p="md" radius="md" shadow="xs" withBorder>
-              <Stack spacing="md">
+              <Stack gap={10}>
                 <Title order={5}>Add Media</Title>
                 <FileInput
                   accept="image/*,video/*"

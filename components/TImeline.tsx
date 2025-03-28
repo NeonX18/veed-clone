@@ -53,8 +53,8 @@ export default function Timeline({
         withBorder
         style={{ width: "100%", maxWidth: 600, paddingBottom: "20px" }}
       >
-        <Stack spacing="sm" align="center">
-          <Group position="apart" style={{ width: "100%" }}>
+        <Stack gap="sm" align="center">
+          <Group justify="apart" style={{ width: "100%" }}>
             <Text size="sm" c="dimmed">
               Start: {selected.startTime}s
             </Text>
@@ -108,7 +108,11 @@ export default function Timeline({
         </Button>
       </Group>
 
-      <Text align="center" size="sm" c="dimmed" style={{ marginTop: "8px" }}>
+      <Text
+        size="sm"
+        c="dimmed"
+        style={{ marginTop: "8px", textAlign: "center" }}
+      >
         ⏱ {timer}s
       </Text>
     </Box>

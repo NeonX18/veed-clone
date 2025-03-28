@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { NumberInput, Paper, Stack, Title } from "@mantine/core";
-import { MediaItem } from "@/lib/types";
+import { NumberInput, Paper, Stack, Title } from '@mantine/core';
+import { MediaItem } from '@/lib/types';
 
 type Props = {
   selected: MediaItem | undefined;
@@ -16,17 +16,25 @@ export default function LeftMenu({ selected, onUpdate }: Props) {
       </Paper>
     );
 
+  const handleWidthChange = (val: string | number | null) => {
+    const width = typeof val === 'number' ? val : parseFloat(val as string) || 0;
+    onUpdate(selected.id, { width });
+  };
+
+  const handleHeightChange = (val: string | number | null) => {
+    const height = typeof val === 'number' ? val : parseFloat(val as string) || 0;
+    onUpdate(selected.id, { height });
+  };
+
   return (
     <Paper p="md" radius="md" shadow="xs" withBorder>
-      <Stack spacing="sm">
+      <Stack gap="sm">
         <Title order={5}>Size</Title>
 
         <NumberInput
           label="Width"
           value={selected.width}
-          onChange={(val) =>
-            onUpdate(selected.id, { width: val || selected.width })
-          }
+          onChange={handleWidthChange} 
           radius="md"
           size="sm"
         />
@@ -34,9 +42,7 @@ export default function LeftMenu({ selected, onUpdate }: Props) {
         <NumberInput
           label="Height"
           value={selected.height}
-          onChange={(val) =>
-            onUpdate(selected.id, { height: val || selected.height })
-          }
+          onChange={handleHeightChange}
           radius="md"
           size="sm"
         />

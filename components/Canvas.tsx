@@ -1,7 +1,7 @@
 "use client";
 
 import { Rnd } from "react-rnd";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { MediaItem } from "@/lib/types";
 import ReactPlayer from "react-player";
 import { Button } from "@mantine/core";
